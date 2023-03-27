@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->integer('zip');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

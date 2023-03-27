@@ -53,6 +53,9 @@ class RouteServiceProvider extends ServiceProvider
     }
     protected function mapDivisionRoute(): void
     {
-        Route::prefix('division')->name('division.')->group(base_path('routes/divisionRoute.php'));
+        Route::prefix('division')
+            ->name('division.')
+            ->middleware(['web'])
+            ->group(base_path('routes/divisionRoute.php'));
     }
 }

@@ -11,8 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Responsive datatable examples -->
+    <link href="{{ asset('dash_board') }}/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
+    {{-- data table --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('dash_board') }}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
@@ -119,9 +126,18 @@
     <script src="{{ asset('dash_board') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <script src="{{ asset('dash_board') }}/assets/js/pages/dashboard.init.js"></script>
-
     <!-- App js -->
     <script src="{{ asset('dash_board') }}/assets/js/app.js"></script>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+
+    @stack('js')
 </body>
 
 
