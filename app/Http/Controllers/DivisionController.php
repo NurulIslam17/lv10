@@ -11,7 +11,8 @@ class DivisionController extends Controller
 {
     public function index()
     {
-        return view('dashboard.division.index');
+        $divisions = Division::orderby('name', 'ASC')->get();
+        return view('dashboard.division.index', ['divisions' => $divisions]);
     }
     public function create()
     {
@@ -19,12 +20,22 @@ class DivisionController extends Controller
     }
     public function store(RequestDivision $request)
     {
-        // return $request;
         try {
             Division::create($request->validated());
             return redirect()->route('division.index');
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            dd($th);
+            Log::error($th->getMessage());
+            return back();
+        }
+    }
+    public function update(RequestDivision $request, Division $division)
+    {
+        try {
+            $division->update($request->validated());
+            return redirect()->route('division.index');
+        } catch (\Throwable $th) {
+            dd($th);
             Log::error($th->getMessage());
             return back();
         }

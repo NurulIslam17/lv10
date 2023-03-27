@@ -5,7 +5,7 @@
             <div class="card card-body">
                 <div class=" d-flex justify-content-between">
                     <div>
-                        <h1>Division</h1>
+                        <h2>Division</h2>
                     </div>
                     <div>
                         <a href="{{ route('division.create') }}" class="btn btn-success text-light"><i class="fa fa-plus"></i>
@@ -23,31 +23,45 @@
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">SL</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">ZIP</th>
+                                <th scope="col">Status</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-success">Edit</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-
+                            @foreach ($divisions as $division)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $division->name }}</td>
+                                    <td>{{ $division->zip }}</td>
+                                    <td>
+                                        @if ($division->status == 1)
+                                            <span class="badge bg-success">Active</span>
+                                        @else
+                                            <span class="badge bg-warning">Inactive</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#editDivision-{{ $division->id }}">
+                                            <i class="fa fa-edit text-dark"></i> Edit
+                                        </button>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash text-light"></i>
+                                            Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div> <!-- end col -->
     </div>
+
+
+    @include('dashboard.division.modal.edit')
 @endsection
 
 @push('js')

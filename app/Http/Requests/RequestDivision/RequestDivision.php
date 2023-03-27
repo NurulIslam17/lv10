@@ -26,7 +26,7 @@ class RequestDivision extends FormRequest
         return [
             'name' => "required|string|min:3|max:20",
             'email' => "required|string|min:5|max:20",
-            'zip' => "required|unique:divisions|integer"
+            'zip' => "required|unique:divisions|integer",
         ];
     }
 }

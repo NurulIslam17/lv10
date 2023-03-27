@@ -25,33 +25,34 @@
                 <form action="{{ route('division.store') }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="formrow-firstname-input">Division</label>
-                        <input type="text" name="name" class="form-control" id="formrow-firstname-input">
+                        <label for="division">Division</label>
+                        <input type="text" name="name" class="form-control" placeholder="Division name"
+                            id="division">
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="formrow-inputCity">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="division@gmail.com"
-                                    id="formrow-inputCity">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="email@gmail.com"
+                                    id="email">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="formrow-inputZip">Zip</label>
-                                <input type="text" name="zip" class="form-control" id="formrow-inputZip">
+                                <label for="zip">Zip</label>
+                                <input type="text" name="zip" class="form-control" placeholder="ZIP Code"
+                                    id="zip">
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-
+                    {{-- <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" name="status" class="custom-control-input" id="formrow-customCheck">
                             <label class="custom-control-label" for="formrow-customCheck">Check me out</label>
                         </div>
-                    </div>
+                    </div> --}}
                     <div>
                         <button type="submit" class="btn btn-primary w-md">Submit</button>
                     </div>
