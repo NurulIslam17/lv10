@@ -35,6 +35,17 @@ class DivisionController extends Controller
             $division->update($request->validated());
             return redirect()->route('division.index');
         } catch (\Throwable $th) {
+            // dd($th);
+            Log::error($th->getMessage());
+            return back();
+        }
+    }
+    public function delete($division)
+    {
+        try {
+            Division::findOrFail($division)->delete();
+            return redirect()->route('division.index');
+        } catch (\Throwable $th) {
             dd($th);
             Log::error($th->getMessage());
             return back();

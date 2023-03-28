@@ -23,33 +23,24 @@
                     <table class="table table-bordered table-striped" id="myTable">
                         <thead>
                             <tr>
-                                <th scope="col">SL</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">ZIP</th>
-                                <th scope="col">Status</th>
-                                <th scope="col" class="text-center">Action</th>
+                                <th scope="col" class="text-center">SL</th>
+                                <th scope="col" class="text-center">Name</th>
+                                <th scope="col" class="text-center">Bangla</th>
+                                <th scope="col" class="text-center">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($divisions as $division)
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $division->name }}</td>
-                                    <td>{{ $division->zip }}</td>
+                                    <td>{{ $division->bn_name }}</td>
                                     <td>
                                         @if ($division->status == 1)
                                             <span class="badge bg-success">Active</span>
                                         @else
                                             <span class="badge bg-warning">Inactive</span>
                                         @endif
-                                    </td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#editDivision-{{ $division->id }}">
-                                            <i class="fa fa-edit text-dark"></i> Edit
-                                        </button>
-                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash text-light"></i>
-                                            Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

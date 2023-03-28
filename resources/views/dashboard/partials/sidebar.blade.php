@@ -32,6 +32,15 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fa fa-users"></i>
+                        <span>Applicant</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('applicants.index') }}">Applicat</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Look Up</span>
                     </a>

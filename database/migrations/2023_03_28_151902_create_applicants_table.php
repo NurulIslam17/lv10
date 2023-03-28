@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisions', function (Blueprint $table) {
+        Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('bn_name');
-            $table->text('url');
-            $table->boolean('status')->default(1);
+            $table->foreignId('district_id')->constrained('districts')->onDelete('cascade');
+            $table->integer('division_id');
+            $table->string('name', 20);
+            $table->string('email', 20);
+            $table->string('phone', 11);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisions');
+        Schema::dropIfExists('applicants');
     }
 };

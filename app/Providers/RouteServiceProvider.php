@@ -50,6 +50,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function map(): void
     {
         $this->mapDivisionRoute();
+        $this->mapApplicantRoute();
     }
     protected function mapDivisionRoute(): void
     {
@@ -57,5 +58,13 @@ class RouteServiceProvider extends ServiceProvider
             ->name('division.')
             ->middleware(['web'])
             ->group(base_path('routes/divisionRoute.php'));
+    }
+
+    protected function mapApplicantRoute()
+    {
+        Route::prefix('applicant')
+            ->name('applicants.')
+            ->middleware(['web'])
+            ->group(base_path('routes/applicantRoute.php'));
     }
 }
