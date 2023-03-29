@@ -16,10 +16,12 @@ class ApplicantController extends Controller
 
     public function index()
     {
-        return view('dashboard.applicant.index');
+        $applicants = Applicant::orderby('id', 'desc')->get();
+        return view('dashboard.applicant.index', ['items' => $applicants]);
     }
     public function store(RequestApplicant $request)
     {
+        // dd($request->all());
         try {
             Applicant::create($request->validated());
             return redirect()->route('applicants.index')->with('msg', 'Record Inserted');

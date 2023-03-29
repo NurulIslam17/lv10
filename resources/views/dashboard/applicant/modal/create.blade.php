@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label for="division">Division</label>
                                         <select id="division" name="division_id" required class="form-control">
-                                            <option selected="">Choose...</option>
+                                            <option selected disabled>Choose...</option>
                                             <option value="1">Dhaka</option>
                                             <option value="2">Rangpur</option>
                                         </select>
@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <label for="district">District</label>
                                         <select id="district" name="district_id" required class="form-control">
-                                            <option selected="">Choose...</option>
+                                            <option selected disabled>Choose...</option>
                                             <option value="1">Dhaka</option>
                                             <option value="3">Rangpur</option>
                                         </select>

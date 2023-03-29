@@ -27,25 +27,29 @@
                             <tr>
                                 <th scope="col" class="text-center">SL</th>
                                 <th scope="col" class="text-center">Name</th>
-                                <th scope="col" class="text-center">Bangla</th>
-                                <th scope="col" class="text-center">Status</th>
+                                <th scope="col" class="text-center">Email</th>
+                                <th scope="col" class="text-center">Phone</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td scope="col" class="text-center">SL</td>
-                            <td scope="col" class="text-center">Name</td>
-                            <td scope="col" class="text-center">Bangla</td>
-                            <td scope="col" class="text-center">Status</td>
-                            <td scope="col" class="text-center">
-                                <a type="button" class="btn btn-sm btn-success text-light" data-toggle="modal"
-                                    data-target="#editModal">
-                                    <i class="fa fa-edit"></i> Edit
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger text-light">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
-                            </td>
+                            @foreach ($items as $item)
+                                <tr>
+                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
+                                    <td scope="col" class="text-center">{{ $item->name }}</td>
+                                    <td scope="col" class="text-center">{{ $item->email }}</td>
+                                    <td scope="col" class="text-center">{{ $item->phone }}</td>
+                                    <td scope="col" class="text-center">
+                                        <a type="button" class="btn btn-sm btn-success text-light" data-toggle="modal"
+                                            data-target="#editModal">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger text-light">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

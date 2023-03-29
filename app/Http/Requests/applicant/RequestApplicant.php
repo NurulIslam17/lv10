@@ -26,8 +26,8 @@ class RequestApplicant extends FormRequest
             'name' => 'required',
             'email' => "required|unique:applicants",
             'phone' => "required|unique:applicants",
-            'district_id ' => "required",
-            'division_id ' => "required",
+            'division_id' => "required",
+            'district_id' => "required",
         ];
     }
 }

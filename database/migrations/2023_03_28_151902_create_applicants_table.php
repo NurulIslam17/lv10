@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('district_id')->constrained('districts')->onDelete('cascade');
-            $table->integer('division_id');
-            $table->string('name', 20);
-            $table->string('email', 20);
-            $table->string('phone', 11);
+            $table->foreignId('division_id')->constrained('divisions')->onDelete('cascade');
+            $table->integer('district_id');
+            $table->string('name', 25);
+            $table->string('email', 25);
+            $table->string('phone', 15);
             $table->string('image')->nullable();
             $table->timestamps();
         });
