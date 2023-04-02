@@ -28,6 +28,7 @@
     <link href="{{ asset('dash_board') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('dash_board') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    @stack('css')
 
 </head>
 
@@ -35,33 +36,17 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-
         @include('dashboard.partials.header')
-        <!-- ========== Left Sidebar Start ========== -->
-
         @include('dashboard.partials.sidebar')
-        <!-- Left Sidebar End -->
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
         <div class="main-content">
-
             <div class="page-content">
                 <div class="container-fluid">
                     @yield('main')
                 </div>
-                <!-- container-fluid -->
             </div>
-
             @include('dashboard.partials.footer')
         </div>
-        <!-- end main content-->
-
     </div>
-    <!-- END layout-wrapper -->
-
-    <!-- Right Sidebar -->
     <div class="right-bar">
         <div data-simplebar class="h-100">
             <div class="rightbar-title px-3 py-4">
@@ -70,8 +55,6 @@
                 </a>
                 <h5 class="m-0">Settings</h5>
             </div>
-
-            <!-- Settings -->
             <hr class="mt-0" />
             <h6 class="text-center mb-0">Choose Layouts</h6>
 
@@ -108,27 +91,16 @@
 
             </div>
 
-        </div> <!-- end slimscroll-menu-->
+        </div>
     </div>
-    <!-- /Right-bar -->
 
-    <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('dash_board') }}/assets/libs/jquery/jquery.min.js"></script>
     <script src="{{ asset('dash_board') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    {{-- <script src="{{ asset('dash_board') }}/assets/libs/metismenu/metisMenu.min.js"></script> --}}
     <script src="{{ asset('dash_board') }}/assets/libs/simplebar/simplebar.min.js"></script>
     <script src="{{ asset('dash_board') }}/assets/libs/node-waves/waves.min.js"></script>
-
-    <!-- apexcharts -->
-    <script src="{{ asset('dash_board') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
-
-    <script src="{{ asset('dash_board') }}/assets/js/pages/dashboard.init.js"></script>
-    <!-- App js -->
-    <script src="{{ asset('dash_board') }}/assets/js/app.js"></script>
-
     <script>
         $.ajaxSetup({
             headers: {
@@ -136,11 +108,7 @@
             }
         });
     </script>
-
     @stack('js')
 </body>
-
-
-<!-- Mirrored from themesbrand.com/skote/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Sep 2020 15:07:20 GMT -->
 
 </html>

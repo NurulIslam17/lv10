@@ -10,4 +10,14 @@ class Division extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function districts()
+    {
+        return $this->hasMany(District::class, 'division_id');
+    }
+
+    public function applicants()
+    {
+        return $this->hasMany(Applicant::class, 'division_id');
+    }
 }

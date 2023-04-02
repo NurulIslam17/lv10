@@ -28,6 +28,7 @@ class RequestApplicant extends FormRequest
             'phone' => "required|unique:applicants",
             'division_id' => "required",
             'district_id' => "required",
+            'image' => "required",
         ];
     }
 }

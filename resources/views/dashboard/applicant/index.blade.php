@@ -1,4 +1,7 @@
 @extends('dashboard.master')
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
+@endpush
 @section('main')
     <div class="row">
         <div class="col-md-12 ">
@@ -26,7 +29,10 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">SL</th>
+                                <th scope="col" class="text-center">Image</th>
                                 <th scope="col" class="text-center">Name</th>
+                                <th scope="col" class="text-center">Division</th>
+                                <th scope="col" class="text-center">District</th>
                                 <th scope="col" class="text-center">Email</th>
                                 <th scope="col" class="text-center">Phone</th>
                                 <th scope="col" class="text-center">Action</th>
@@ -36,12 +42,24 @@
                             @foreach ($items as $item)
                                 <tr>
                                     <td scope="col" class="text-center">{{ $loop->iteration }}</td>
+                                    <td scope="col" class="text-center">
+                                        @if ($item->image)
+                                            <img class="rounded-circle" src="{{ asset('applicant/' . $item->image) }}"
+                                                style="height:40px;width:40px;" alt="" srcset="">
+                                        @else
+                                            <img class="rounded-circle"
+                                                src="{{ asset('dash_board/assets/images/clients/6.png') }}"
+                                                style="height:40px;width:40px;" alt="" srcset="">
+                                        @endif
+                                    </td>
                                     <td scope="col" class="text-center">{{ $item->name }}</td>
+                                    <td scope="col" class="text-center">{{ $item->division->name }}</td>
+                                    <td scope="col" class="text-center">{{ $item->district->name }}</td>
                                     <td scope="col" class="text-center">{{ $item->email }}</td>
                                     <td scope="col" class="text-center">{{ $item->phone }}</td>
                                     <td scope="col" class="text-center">
                                         <a type="button" class="btn btn-sm btn-success text-light" data-toggle="modal"
-                                            data-target="#editModal">
+                                            data-target="#edit-{{ $item->id }}">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
                                         <a href="#" class="btn btn-sm btn-danger text-light">
@@ -61,30 +79,36 @@
     <!-- Add Modal -->
     @include('dashboard.applicant.modal.create')
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Applicant</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-sm btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('dashboard.applicant.modal.edit')
 @endsection
 
 @push('js')
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <script>
         $('#myTable').dataTable();
+    </script>
+    <script>
+        $('.dropify').dropify();
+    </script>
+
+    <script>
+        function getDistrictData(id) {
+            alert(id);
+            $.ajax({
+                method: "POST",
+                url: "{{ url('get_division_Wise_district') }}",
+                data: {
+                    id: id,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $("#district").html(`<option selected disabled>Chose...</option>`);
+                    $.each(response, function(key, value) {
+                        `<option value="${value.id}">${value.name}</option>`
+                    });
+                }
+            });
+        }
     </script>
 @endpush

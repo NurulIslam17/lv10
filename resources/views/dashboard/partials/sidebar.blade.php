@@ -17,19 +17,6 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">Main Menu</li>
-
-                <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bx-home-circle"></i>
-                        <span>Main Menu</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Default</a></li>
-                        <li><a href="#">Saas</a></li>
-                        <li><a href="#">Crypto</a></li>
-                    </ul>
-                </li>
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="fa fa-users"></i>
@@ -41,7 +28,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bx-home-circle"></i>
+                        <i class="bx bx-git-branch"></i>
                         <span>Look Up</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
