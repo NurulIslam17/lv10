@@ -45,7 +45,7 @@
                                     </td>
                                     <td>
                                         <a type="button" data-toggle="modal"
-                                            data-target="#editDivision-{{ $division->id }}" class="btn btn-info"><i
+                                            data-target="#editDivision-{{ $division->id }}" class="btn btn-sm btn-info"><i
                                                 class="fa fa-book-open text-white"></i> View
                                         </a>
                                     </td>

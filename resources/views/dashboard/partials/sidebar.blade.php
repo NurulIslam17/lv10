@@ -32,9 +32,8 @@
                         <span>Look Up</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('division.index') }}">Division</a></li>
-                        <li><a href="#">Saas</a></li>
-                        <li><a href="#">Crypto</a></li>
+                        <li><a href="{{ route('division.index') }}">Divisions</a></li>
+                        <li><a href="{{ route('district.index') }}">Districts</a></li>
                     </ul>
                 </li>
             </ul>
