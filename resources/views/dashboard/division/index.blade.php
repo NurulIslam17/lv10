@@ -8,8 +8,8 @@
                         <h2>Division</h2>
                     </div>
                     <div>
-                        <a href="{{ route('division.create') }}" class="btn btn-success text-light"><i class="fa fa-plus"></i>
-                            Create</a>
+                        <a class="btn btn-success text-light">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -27,6 +27,7 @@
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Bangla</th>
                                 <th scope="col" class="text-center">Status</th>
+                                <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,12 @@
                                         @else
                                             <span class="badge bg-warning">Inactive</span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a type="button" data-toggle="modal"
+                                            data-target="#editDivision-{{ $division->id }}" class="btn btn-info"><i
+                                                class="fa fa-book-open text-white"></i> View
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

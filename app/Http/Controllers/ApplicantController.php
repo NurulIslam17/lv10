@@ -15,7 +15,6 @@ class ApplicantController extends Controller
     {
         $this->middleware('auth');
     }
-
     function upload($model, $request, $path, $input = "")
     {
         $file = $request->file($input);
@@ -24,7 +23,6 @@ class ApplicantController extends Controller
         $model->$input = $file_name;
         $model->save();
     }
-
     public function index()
     {
         $applicants = Applicant::with('division', 'district')->orderby('id', 'desc')->get();
@@ -33,7 +31,6 @@ class ApplicantController extends Controller
     }
     public function store(RequestApplicant $request)
     {
-        // dd($request->all());
         try {
             $model = Applicant::create($request->validated());
             $this->upload($model, $request, 'applicant/', 'image');
@@ -43,7 +40,6 @@ class ApplicantController extends Controller
             return back()->with('msg', 'Something went wrong');
         }
     }
-
     //  get District
     public function getDistrict(Request $request)
     {

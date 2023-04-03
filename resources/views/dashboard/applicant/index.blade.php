@@ -97,13 +97,13 @@
             alert(id);
             $.ajax({
                 method: "POST",
-                url: "{{ url('get_division_Wise_district') }}",
+                url: "{{ url('get_division_wise_districts') }}",
                 data: {
                     id: id,
                 },
                 success: function(response) {
                     console.log(response);
-                    $("#district").html(`<option selected disabled>Chose...</option>`);
+                    $("#district").empty();
                     $.each(response, function(key, value) {
                         `<option value="${value.id}">${value.name}</option>`
                     });
