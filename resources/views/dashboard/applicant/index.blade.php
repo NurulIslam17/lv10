@@ -93,22 +93,28 @@
     </script>
 
     <script>
-        function getDistrictData(id) {
-            alert(id);
-            $.ajax({
-                method: "POST",
-                url: "{{ url('get_division_wise_districts') }}",
-                data: {
-                    id: id,
-                },
-                success: function(response) {
-                    console.log(response);
-                    $("#district").empty();
-                    $.each(response, function(key, value) {
-                        `<option value="${value.id}">${value.name}</option>`
-                    });
-                }
+        $(document).ready(function() {
+            $("#division").on('change', function(e) {
+                e.preventDefault();
+                let _divisionId = $(this).val();
+                let url = "{{ route('applicants.get.districts.for.division', ':divisionId') }}";
+                url = url.replace(":divisionId", _divisionId);
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    cache: false,
+                    success: function(response) {
+                        $("#district").html(
+                            `<option selected disabled>Choose districts...</option>`);
+                        console.log(response);
+                        $.each(response, function(key, value) {
+                            $("#district").append(
+                                `<option value="${value.id}">${value.name}</option>`
+                            );
+                        });
+                    }
+                });
             });
-        }
+        });
     </script>
 @endpush

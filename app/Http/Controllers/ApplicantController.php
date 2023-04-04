@@ -41,9 +41,9 @@ class ApplicantController extends Controller
         }
     }
     //  get District
-    public function getDistrict(Request $request)
+    public function getDistrict($id)
     {
-        $data = District::where('division_id', $request->id)->get();
+        $data = District::where('division_id', $id)->get();
         return response()->json($data);
     }
 }

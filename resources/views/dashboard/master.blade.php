@@ -12,21 +12,21 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- App favicon -->
+    <!-- _______________________________________App favicon_______________________________________ -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!-- Responsive datatable examples -->
+    <!-- ______________________________________Responsive datatable examples______________________________________ -->
     <link href="{{ asset('dash_board') }}/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
         rel="stylesheet" type="text/css" />
-    {{-- data table --}}
+    {{-- ______________________________________data table______________________________________ --}}
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
-    <!-- Bootstrap Css -->
+    <!-- ______________________________________Bootstrap Css______________________________________ -->
     <link href="{{ asset('dash_board') }}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
         type="text/css" />
-    <!-- Icons Css -->
+    <!-- ______________________________________Icons Css______________________________________ -->
     <link href="{{ asset('dash_board') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
+    <!-- ______________________________________App Css______________________________________-->
     <link href="{{ asset('dash_board') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     @stack('css')
 
@@ -34,7 +34,7 @@
 
 <body data-sidebar="dark">
 
-    <!-- Begin page -->
+    <!-- ______________________________________________Begin page______________________________________________ -->
     <div id="layout-wrapper">
         @include('dashboard.partials.header')
         @include('dashboard.partials.sidebar')
@@ -96,11 +96,12 @@
 
     <div class="rightbar-overlay"></div>
 
-    <!-- JAVASCRIPT -->
+    <!-- __________JAVASCRIPT__________________ -->
     <script src="{{ asset('dash_board') }}/assets/libs/jquery/jquery.min.js"></script>
     <script src="{{ asset('dash_board') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('dash_board') }}/assets/libs/simplebar/simplebar.min.js"></script>
     <script src="{{ asset('dash_board') }}/assets/libs/node-waves/waves.min.js"></script>
+
     <script>
         $.ajaxSetup({
             headers: {

@@ -21,8 +21,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="division">Division</label>
-                                        <select id="division" name="division_id" onchange="getDistrictData(this.value)"
-                                            required class="form-control">
+                                        <select id="division" name="division_id" required class="form-control">
                                             <option selected disabled>Choose...</option>
                                             @foreach ($divisions as $division)
                                                 <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -34,11 +33,7 @@
                                     <div class="form-group">
                                         <label for="district">District</label>
                                         <select id="district" name="district_id" required class="form-control">
-                                            <option selected disabled>Choose...</option>
-                                            <option value="1">District 1</option>
-                                            <option value="2">District 2</option>
-                                            <option value="3">District 3</option>
-                                            <option value="4">District 4</option>
+                                            <option selected disabled>Choose division first...</option>
                                         </select>
                                     </div>
                                 </div>
