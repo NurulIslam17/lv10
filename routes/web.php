@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -16,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+    Route::get('auth/register', 'register')->name('register.account');
 });
 
 // Route::get('/dashboard', function () {

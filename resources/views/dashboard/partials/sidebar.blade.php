@@ -12,22 +12,14 @@
                         <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right"></span>
                         <span>Dashboards</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Home</a></li>
-                    </ul>
-                </li>
-
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{ route('applicants.index') }}" class="waves-effect">
                         <i class="fa fa-users"></i>
                         <span>Applicant</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('applicants.index') }}">Applicat</a></li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a class="waves-effect">
                         <i class="bx bx-git-branch"></i>
                         <span>Look Up</span>
                     </a>

@@ -60,8 +60,13 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <input type="file" name="image" id="image">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" name="image" id="image">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ asset('applicant/IMG1680451321215449.jpg') }}" alt="">
+                                    </div>
                                 </div>
 
                                 <div class="modal-footer">

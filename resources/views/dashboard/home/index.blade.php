@@ -24,8 +24,8 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="media-body">
-                            <p class="text-muted font-weight-medium">Orders</p>
-                            <h4 class="mb-0">1,235</h4>
+                            <p class="text-muted font-weight-medium">Applicants</p>
+                            <h4 class="mb-0">{{ $applicantsNum }}</h4>
                         </div>
 
                         <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
