@@ -24,10 +24,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="division">Division</label>
-                                            <select id="division" name="division_id" required class="form-control">
+                                            <select id="division" name="division_id" onchange="getDistrict(this)"
+                                                required class="form-control">
                                                 <option selected disabled>Choose...</option>
-                                                <option value="1">Dhaka</option>
-                                                <option value="2">Rangpur</option>
+                                                @foreach ($divisions as $division)
+                                                    <option {{ $division->id == $item->division_id ? 'selected' : '' }}
+                                                        value="{{ $division->id }}">{{ $division->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -36,8 +39,15 @@
                                             <label for="district">District</label>
                                             <select id="district" name="district_id" required class="form-control">
                                                 <option selected disabled>Choose...</option>
-                                                <option value="1">Dhaka</option>
-                                                <option value="3">Rangpur</option>
+                                                {{-- @foreach ($districts as $district)
+                                                    @if ($district->id == $item->district_id)
+                                                        <option value="">$district->name</option>
+                                                    @else
+                                                        <option value=""></option>
+                                                    @endif
+                                                @endforeach --}}
+                                                {{-- <option value="1">Dhaka</option>
+                                                <option value="3">Rangpur</option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -62,10 +72,12 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="file" name="image" id="image">
+                                        <input class="dropify" data-height="90" type="file" name="image"
+                                            id="image">
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="{{ asset('applicant/IMG1680451321215449.jpg') }}" alt="">
+                                        <img src="{{ asset('applicant/' . $item->image) }}"
+                                            style="height:100px;width:100%;" alt="">
                                     </div>
                                 </div>
 
@@ -83,3 +95,29 @@
         </div>
     </div>
 @endforeach
+
+@push('js')
+    <script>
+        function getDistrict(e) {
+            let districtDivContainer = e.parentElement.parentElement.parentElement;
+            let districtDiv = districtDivContainer.children[1].children[0].children[1];
+            let _divisionId = e.value;
+            let url = "{{ route('applicants.get.districts.for.division', ':divisionId') }}";
+            url = url.replace(":divisionId", _divisionId);
+            $.ajax({
+                url: url,
+                type: "GET",
+                cache: false,
+                success: function(response) {
+                    $(districtDiv).html(
+                        `<option selected disabled>Choose districts...</option>`);
+                    $.each(response, function(key, value) {
+                        $(districtDiv).append(
+                            `<option value="${value.id}">${value.name}</option>`
+                        );
+                    });
+                }
+            });
+        }
+    </script>
+@endpush

@@ -52,6 +52,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapDivisionRoute();
         $this->mapDistrictRoute();
         $this->mapApplicantRoute();
+        $this->mapTodoRoute();
     }
     protected function mapDivisionRoute(): void
     {
@@ -75,5 +76,12 @@ class RouteServiceProvider extends ServiceProvider
             ->name('district.')
             ->middleware(['web'])
             ->group(base_path('routes/districtRoute.php'));
+    }
+    protected function mapTodoRoute()
+    {
+        Route::prefix('todos')
+            ->name('todo.')
+            ->middleware(['web'])
+            ->group(base_path('routes/todoRoute.php'));
     }
 }

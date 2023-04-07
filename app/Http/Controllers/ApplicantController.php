@@ -27,7 +27,8 @@ class ApplicantController extends Controller
     {
         $applicants = Applicant::with('division', 'district')->orderby('id', 'desc')->get();
         $divisions = Division::get();
-        return view('dashboard.applicant.index', ['items' => $applicants, 'divisions' => $divisions]);
+        $district = District::get();
+        return view('dashboard.applicant.index', ['items' => $applicants, 'divisions' => $divisions, 'districts' => $district]);
     }
     public function store(RequestApplicant $request)
     {

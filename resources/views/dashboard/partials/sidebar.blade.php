@@ -19,6 +19,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('todo.index') }}" class="waves-effect">
+                        <i class="fa fa-users"></i>
+                        <span>Todo App</span>
+                    </a>
+                </li>
+                <li>
                     <a class="waves-effect">
                         <i class="bx bx-git-branch"></i>
                         <span>Look Up</span>
