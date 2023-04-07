@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('todo');
             $table->tinyInteger('status')->default(0);
+            $table->string('deadline')->nullable();
             $table->timestamps();
         });
     }

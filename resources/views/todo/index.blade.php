@@ -14,8 +14,12 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <label for="todo" class="form-label">Example textarea</label>
+                                    <label for="todo" class="form-label">Your Todo</label>
                                     <textarea class="form-control" name="todo" id="todo" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="todo" class="form-label">Deadline</label></br>
+                                    <input type="date" class="form-control" name="deadline" id="">
                                 </div>
                                 <div class="col-md-12">
                                     <input class="btn btn-sm btn-success" type="submit" value="Add ToDo">
@@ -36,18 +40,22 @@
                                 <tr>
                                     <th scope="col">SL</th>
                                     <th scope="col">Todo</th>
+                                    <th scope="col">Deadline</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($todos as $todo)
-                                    <tr>
+                                    <tr class="">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <p>{{ Str::substr($todo->todo, 0, 40) }}...</p>
+                                            <p>{{ Str::substr($todo->todo, 0, 30) }}...</p>
                                         </td>
                                         <td>
+                                            <p>{{ $todo->deadline }}</p>
+                                        </td>
+                                        <td id="tr_stat-{{ $todo->id }}">
                                             @if ($todo->status == 0)
                                                 <span class="badge badge-warning">Incomplete</span>
                                             @else
@@ -55,9 +63,11 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-success">Status</a>
+                                            <a onclick="changeStat({{ $todo->id }})"
+                                                class="btn btn-sm btn-success">Status</a>
                                             <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                            <a type="button" data-toggle="modal" data-target="#todoDetails"
+                                            <a type="button" data-toggle="modal"
+                                                data-target="#todoDetails-{{ $todo->id }}"
                                                 class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
@@ -70,27 +80,45 @@
         </div>
     </div>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#todoDetails">
-        Launch demo modal
-    </button>
-
     <!-- Modal -->
-    <div class="modal fade" id="todoDetails" tabindex="-1" aria-labelledby="todoDetailsLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="todoDetailsLabel">Modal title</h5>
-                    <button type="button" class="btn btn-danger btn-close" data-dismiss="modal"
-                        aria-label="Close">X</button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    @foreach ($todos as $todo)
+        <div class="modal fade" id="todoDetails-{{ $todo->id }}" tabindex="-1" aria-labelledby="todoDetailsLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+
+                        <p class="badge badge-danger py-2 text-dark">Deadline : ( {{ $todo->deadline }})</p>
+                        <button type="button" class="btn btn-sm btn-danger btn-close" data-dismiss="modal"
+                            aria-label="Close">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ $todo->todo }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection
+@push('js')
+    <script>
+        function changeStat(data) {
+            let _id = data;
+            let url = "{{ route('todo.change.status', ':id') }}";
+            url = url.replace(":id", _id);
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    $(`#tr_stat-${_id}`).html('');
+                    if (response.status == 0) {
+                        $(`#tr_stat-${_id}`).append(`<span class="badge badge-warning">Incomplete</span>`);
+                    } else {
+                        $(`#tr_stat-${_id}`).append(`<span class="badge badge-success">Complete</span>`);
+                    }
+                }
+            });
+        }
+    </script>
+@endpush

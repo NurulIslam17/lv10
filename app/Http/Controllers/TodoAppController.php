@@ -9,14 +9,31 @@ class TodoAppController extends Controller
 {
     public function index()
     {
-        $todos = Todo::orderby('id', 'desc')->get();
+        $todos = Todo::orderby('deadline', 'asc')->get();
         return view('todo.index', ['todos' => $todos]);
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         Todo::insert([
-            'todo' => $request->todo
+            'todo' => $request->todo,
+            'deadline' => $request->deadline,
         ]);
         return back()->with('msg', 'New Todo Added');
+    }
+
+    public function changeStatus($id)
+    {
+        $todo = Todo::findOrFail($id);
+        // return response()->json(['data' => $todo]);
+        if ($todo->status == 0) {
+            $todo->status = 1;
+            $todo->save();
+            return response()->json(['status' => 1]);
+        } else {
+            $todo->status = 0;
+            $todo->save();
+            return response()->json(['status' => 0]);
+        }
     }
 }
