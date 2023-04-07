@@ -28,6 +28,7 @@
     <link href="{{ asset('dash_board') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- ______________________________________App Css______________________________________-->
     <link href="{{ asset('dash_board') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
     @stack('css')
 
 </head>

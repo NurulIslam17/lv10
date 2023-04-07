@@ -22,6 +22,16 @@ class TodoAppController extends Controller
         return back()->with('msg', 'New Todo Added');
     }
 
+    public function delete($id)
+    {
+        $todo = Todo::findOrFail($id)->delete();
+        if ($todo) {
+            return response()->json(['status' => 1]);
+        } else {
+            return response()->json(['status' => 0]);
+        }
+    }
+
     public function changeStatus($id)
     {
         $todo = Todo::findOrFail($id);

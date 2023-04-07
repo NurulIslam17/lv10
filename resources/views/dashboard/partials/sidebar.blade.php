@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     <a href="{{ route('todo.index') }}" class="waves-effect">
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-clipboard-list"></i>
                         <span>Todo App</span>
                     </a>
                 </li>

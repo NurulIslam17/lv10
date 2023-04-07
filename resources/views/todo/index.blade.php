@@ -35,7 +35,7 @@
                         <h3>Todo List</h3>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped my_data_table">
                             <thead class="text-center">
                                 <tr>
                                     <th scope="col">SL</th>
@@ -47,7 +47,7 @@
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($todos as $todo)
-                                    <tr class="">
+                                    <tr class="row-{{ $todo->id }}">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
                                             <p>{{ Str::substr($todo->todo, 0, 30) }}...</p>
@@ -65,7 +65,8 @@
                                         <td>
                                             <a onclick="changeStat({{ $todo->id }})"
                                                 class="btn btn-sm btn-success">Status</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            <a onclick="deleteTodo(this,{{ $todo->id }})"
+                                                class="btn btn-sm btn-danger">Delete</a>
                                             <a type="button" data-toggle="modal"
                                                 data-target="#todoDetails-{{ $todo->id }}"
                                                 class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
@@ -101,6 +102,12 @@
     @endforeach
 @endsection
 @push('js')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.my_data_table').DataTable();
+        });
+    </script>
     <script>
         function changeStat(data) {
             let _id = data;
@@ -119,6 +126,25 @@
                     }
                 }
             });
+        }
+    </script>
+    <script>
+        function deleteTodo(e, data) {
+            let dataRow = e.parentElement.parentElement;
+            let _deleteId = data;
+            let url = "{{ route('todo.delete', ':deleteId') }}";
+            url = url.replace(":deleteId", _deleteId);
+            // alert(url);
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    if (response.status == 1) {
+                        $(dataRow).remove();
+                    }
+                }
+            })
         }
     </script>
 @endpush
