@@ -88,8 +88,11 @@
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-
-                        <p class="badge badge-danger py-2 text-dark">Deadline : ( {{ $todo->deadline }})</p>
+                        @if ($todo->status == 1)
+                            <p class="badge badge-success py-2 text-dark">Task Completed</p>
+                        @else
+                            <p class="badge badge-danger py-2 text-dark">Deadline : ( {{ $todo->deadline }})</p>
+                        @endif
                         <button type="button" class="btn btn-sm btn-danger btn-close" data-dismiss="modal"
                             aria-label="Close">X</button>
                     </div>
