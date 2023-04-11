@@ -79,8 +79,7 @@ class RouteServiceProvider extends ServiceProvider
     }
     protected function mapTodoRoute()
     {
-        Route::prefix('todos')
-            ->name('todo.')
+        Route::name('todo.')
             ->middleware(['web'])
             ->group(base_path('routes/todoRoute.php'));
     }

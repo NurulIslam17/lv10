@@ -50,7 +50,7 @@
                                     <tr class="row-{{ $todo->id }}">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <p>{{ Str::substr($todo->todo, 0, 30) }}...</p>
+                                            <p>{{ Str::substr($todo->todo, 0, 25) }}...</p>
                                         </td>
                                         <td>
                                             <p>{{ $todo->deadline }}</p>

@@ -13,7 +13,8 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-success text-light" data-toggle="modal" data-target="#addModal">
-                            <i class="fa fa-plus"></i> Create
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            Create
                         </button>
                     </div>
                 </div>
