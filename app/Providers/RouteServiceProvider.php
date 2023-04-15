@@ -53,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapDistrictRoute();
         $this->mapApplicantRoute();
         $this->mapTodoRoute();
+        // $this->mapRamadanRoute();
     }
     protected function mapDivisionRoute(): void
     {
@@ -83,4 +84,10 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware(['web'])
             ->group(base_path('routes/todoRoute.php'));
     }
+    // protected function mapRamadanRoute()
+    // {
+    //     Route::name('ramadan.')
+    //         ->middleware(['web'])
+    //         ->group(base_path('routes/todoRoute.php'));
+    // }
 }

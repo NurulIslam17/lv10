@@ -34,6 +34,19 @@
                         <li><a href="{{ route('district.index') }}">Districts</a></li>
                     </ul>
                 </li>
+                {{-- Ramadan --}}
+                <li>
+                    <a class="waves-effect">
+                        <i class="bx bx-git-branch"></i>
+                        <span>Ramadan</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="{{ request()->is('iftar*') ? 'bg-secondary' : '' }}"><a
+                                href="{{ route('iftar.index') }}">Iftar</a></li>
+                        <li class="{{ request()->is('sehari*') ? 'bg-secondary' : '' }}"><a
+                                href="{{ route('sehari.index') }}">Sehari</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
